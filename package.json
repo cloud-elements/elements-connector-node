@@ -1,0 +1,32 @@
+{
+  "name": "cloudelements",
+  "version": "0.1.0",
+  "description": "A connection client for Cloud Elements services.",
+  "main": "lib/elements",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "lsc -c -o lib src/*.ls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cloud-elements/elements-connector-node"
+  },
+  "author": "Charlie Ozinga",
+  "contributors": [
+    {
+      "name": "Charlie Ozinga",
+      "email": "charlie@cloud-elements.com"
+    }
+  ],
+  "license": "proprietary",
+  "bugs": {
+    "url": "https://github.com/cloud-elements/elements-connector-node/issues"
+  },
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "devDependencies": {
+    "LiveScript": ">= 1.2.0" 
+  },
+  "homepage": "https://github.com/cloud-elements/elements-connector-node"
+}
