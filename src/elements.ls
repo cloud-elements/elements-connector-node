@@ -1,20 +1,26 @@
+require! http
+require! url
+
+# this client doesn't handle multipart/form data yet
 exports.Client = class Client
   (@api-endpoint = 'https://console.cloud-elements.com/elements/api-v1') ->
     @headers = {}
 
-  request: (method, provider, token, api, params = null, files = null,
-           version = '1', headers = {}) ->
-    url = "#{@api-endpoint}/#{provider}/#{version}/#{api}"
-    headers = headers with Authorization: "Element #{token}"
-    
-    switch method
-    | \get => http.get-query @url, @headers, params
-    | \post 
-      if files?
-        http.post-query @url, @headers,
-        params with {[f, new File(f)] for f in files}
-      else
-        http.post-body @url, @headers, params
-    | \put => http.put-body @url, @headers, params
-    | \delete => http.delete @url, @headers, params
+  request: (method, provider, token, api, cb, params = {},
+            files = null, version = '1', headers = {}) ->
+    theurl = "#{@api-endpoint}/#{provider}/#{version}/#{api}" +
+      url.format query: params
+    options = url.parse(theurl) <<<
+      {method, headers: {} <<< @headers <<< Authorization: "Element #token"}
 
+    output = ""
+    req = http.request options, (res) ->
+      res.on \readable -> output += res.read!
+      res.on \end -> cb? JSON.parse output
+      res.on \error -> console.warn "response error: #{it.message}"
+    req.on \error -> console.warn "request error: #{it.message}"
+    
+    if (options.method in [\post \put])
+      req.write JSON.stringify params
+
+    req.end!
