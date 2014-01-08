@@ -1,3 +1,9 @@
+# TextStatusChangeRoute.java $Revision: 1 $ Copyright (c) 2013 Cloud
+# Elements.  All rights reserved. CLOUD-ELEMENTS PROPRIETARY /
+# CONFIDENTIAL. Use is subject to license terms.
+# 
+# Created on 1/1/7 by Charlie Ozinga.
+
 require! http
 require! url
 
