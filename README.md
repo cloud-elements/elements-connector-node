@@ -1,7 +1,7 @@
 Cloud Elements Connector (node.js)
 ==================================
 
-This is the connector library for Cloud Elements in javascript
+This is the connector library for Cloud Elements in javascript.
 You can install it into your application like this:
 
     npm install cloudelements
