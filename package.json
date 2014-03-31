@@ -1,6 +1,6 @@
 {
   "name": "cloudelements",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A connection client for Cloud Elements services.",
   "main": "lib/elements",
   "scripts": {
